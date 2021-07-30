@@ -87,14 +87,12 @@ exports.dealLike = (req, res, next) => {
 				if (req.body.like === 0) {
 					console.log("traitement " + req.body.like);
 					sauce.usersLiked.forEach((userId, index) => {
-						//console.log("like =0 " + index + " " + sauce.usersLiked[index] + " " + req.body.userId);
 						if (sauce.usersLiked[index] === req.body.userId) {
 							sauce.usersLiked.splice(index, 1);
 							sauce.likes -= 1;
 						}
 					});
 					sauce.usersDisliked.forEach((userId, index) => {
-						//console.log("like =0 " + index + " " + sauce.usersDisliked[index] + " " + req.body.userId);
 						if (sauce.usersDisliked[index] === req.body.userId) {
 							sauce.usersDisliked.splice(index, 1);
 							sauce.dislikes -= 1;
@@ -112,6 +110,7 @@ exports.dealLike = (req, res, next) => {
 				}
 			}
 			// update likes
+			console.log("---------------------------------------------");
 			Sauce.updateOne(
 				{ _id: req.params.id },
 				{

@@ -2,8 +2,8 @@ POST  http://localhost:3000/api/auth/signup
 Content-Type:application/json
 
 {
-    "email":"a",
-    "password":"b"
+    "email":"t.hilbert@wanadoo.fr",
+    "password":"1234"
 }
 ###
 POST  http://localhost:3000/api/auth/login
@@ -31,34 +31,35 @@ POST  http://localhost:3000/api/sauces
 }
 ###
 GET http://localhost:3000/api/sauces
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc2MDE3NTEsImV4cCI6MTYyNzY4ODE1MX0.yAJkzYG-CyHR-UQK3vF2yXFFqUij5VQ2X2o6lcQl9GY
 ###
-db.sauces.insert({
-        "userId":"frank",
-    "name":"tabasco",
-    "manufacturer":"kraft",
-    "description": "bouteille",
-    "mainPepper":"poivre",
-    "imageUrl":"",
-    "heat":8,
-    "likes":3,
-    "dislikes":2,
-    "usersLiked":"",
-    "usersDisliked":""
-})
-db.sauces.update({userId:"frank"},
-    {$set: {
-            likes:5
+# db.sauces.insert({
+#         "userId":"frank",
+#     "name":"tabasco",
+#     "manufacturer":"kraft",
+#     "description": "bouteille",
+#     "mainPepper":"poivre",
+#     "imageUrl":"",
+#     "heat":8,
+#     "likes":3,
+#     "dislikes":2,
+#     "usersLiked":"",
+#     "usersDisliked":""
+# })
+# db.sauces.update({userId:"frank"},
+#     {$set: {
+#             likes:5
 
-    } })
-    "name":"tabasco",
-    "manufacturer":"kraft",
-    "description": "bouteille",
-    "mainPepper":"poivre",
-    "imageUrl":"",
-    "heat":8,
-    "likes":3,
-    "dislikes":2,
-    "usersLiked":"",
-    "usersDisliked":""
-})
+#     } })
+#     "name":"tabasco",
+#     "manufacturer":"kraft",
+#     "description": "bouteille",
+#     "mainPepper":"poivre",
+#     "imageUrl":"",
+#     "heat":8,
+#     "likes":3,
+#     "dislikes":2,
+#     "usersLiked":"",
+#     "usersDisliked":""
+# })
 
