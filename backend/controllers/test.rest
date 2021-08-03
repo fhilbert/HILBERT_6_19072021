@@ -14,25 +14,72 @@ Content-Type:application/json
     "password":"b"
 }
 ###
-POST  http://localhost:3000/api/sauces
+POST  http://localhost:3000/api/auth/login
+Content-Type:application/json
 
 {
-    "userId":"frank",
-    "name":"tabasco",
-    "manufacturer":"kraft",
-    "description": "bouteille",
-    "mainPepper":"poivre",
-    "imageUrl":"",
-    "heat":"",
-    "likes":0,
-    "dislikes":0,
-    "usersLiked":"",
-    "usersDisliked":""
+    "email":"jeanfrancois@gmail.com",
+    "password":"1234"
+}
+###
+#jean francois
+POST  http://localhost:3000/api/sauces
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc4MDQ5ODQsImV4cCI6MTYyNzg5MTM4NH0.70Fb2RhPig_DWKZn_G6sm3OmtOogTCBDyr__SJYW2hU
+Content-Type:application/json
+
+{
+    "sauce":{
+        "userId":"1234567890",
+        "name":"tabasco",
+        "manufacturer":"kraft",
+        "description": "bouteille",
+        "mainPepper":"poivre",
+        "imageUrl":"http://localhost:3000/images/tabasco.png",
+        "heat":4,
+        "likes":0,
+        "dislikes":0,
+        "usersLiked":[],
+        "usersDisliked":[]
+    }
 }
 ###
 GET http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc2MDE3NTEsImV4cCI6MTYyNzY4ODE1MX0.yAJkzYG-CyHR-UQK3vF2yXFFqUij5VQ2X2o6lcQl9GY
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc4MDQ5ODQsImV4cCI6MTYyNzg5MTM4NH0.70Fb2RhPig_DWKZn_G6sm3OmtOogTCBDyr__SJYW2hU
+
 ###
+POST http://localhost:3000/api/sauces/"60feff6b02ad3ebeb73f43ba"/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc4MDQ5ODQsImV4cCI6MTYyNzg5MTM4NH0.70Fb2RhPig_DWKZn_G6sm3OmtOogTCBDyr__SJYW2hU
+Content-Type:application/json
+
+{
+    "like": 1,
+    "userId": "USERIDRENVOY2PARLOGIN"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # db.sauces.insert({
 #         "userId":"frank",
 #     "name":"tabasco",

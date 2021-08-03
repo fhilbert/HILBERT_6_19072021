@@ -1,11 +1,67 @@
 const Sauce = require("../models/Sauce");
 const fs = require("fs");
 
+exports.sauceCheck = (req, res, next) => {
+	// userId
+	let myRegex = /[a-z0-9]/gi;
+	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
+	//	if (!req.body.userId.match(myRegex)) return res.status(405).json({ error: "userId non valide" });
+	//verifier existence du userid
+
+	// name
+	if (req.body.name === "") return res.status(405).json({ error: "name vide" });
+	myRegex = /[a-z0-9]/gi;
+	// if (!req.body.name.match(myRegex)) return res.status(405).json({ error: "name invalide" });
+
+	// manufacturer
+	if (req.body.manufacturer === "") return res.status(405).json({ error: "manufacturer vide" });
+	myRegex = /[a-z0-9]/gi;
+	// if (!req.body.manufacturer.match(myRegex)) return res.status(405).json({ error: "manufacturer invalide" });
+
+	// description
+	if (req.body.description === "") return res.status(405).json({ error: "description vide" });
+	myRegex = /[a-z0-9]/gi;
+	// if (req.body.description.match(myRegex)) return res.status(405).json({ error: "description invalide" });
+
+	// mainPepper
+	if (req.body.mainPepper === "") return res.status(405).json({ error: "mainPepper vide" });
+	myRegex = /[a-z0-9]/gi;
+	// if (req.body.mainPepper.match(myRegex)) return res.status(405).json({ error: "mainPepper invalide" });
+
+	// imageUrl
+	if (req.body.imageUrl === "") return res.status(405).json({ error: "imageUrl vide" });
+
+	// heat
+	if (req.body.heat === "") return res.status(405).json({ error: "heat vide" });
+	myRegex = /[0-9]/gi;
+	// if (req.body.heat.match(myRegex)) return res.status(405).json({ error: "heat invalide" });
+
+	// likes
+	if (req.body.likes === "") return res.status(405).json({ error: "likes vide" });
+	myRegex = /[0-9]/gi;
+	// if (req.body.likes === "") return res.status(405).json({ error: "likes invalide" });
+
+	// dislikes
+	if (req.body.dislikes === "") return res.status(405).json({ error: "dislikes vide" });
+	myRegex = /[0-9]/gi;
+	// if (req.body.dislikes === "") return res.status(405).json({ error: "dislikes invalide" });
+
+	// usersLiked
+	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
+	//verifier existence du userid
+
+	// usersDisliked
+	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
+	//verifier existence du userid
+
+	next();
+};
+
 exports.createSauce = (req, res, next) => {
+	console.log("tokenC : " + req.headers.authorization);
+
 	const sauceObject = JSON.parse(req.body.sauce);
-	console.log("------");
-	console.log(sauceObject);
-	console.log("------");
+
 	delete sauceObject._id;
 	const sauce = new Sauce({
 		...sauceObject,
@@ -15,9 +71,6 @@ exports.createSauce = (req, res, next) => {
 		usersDisliked: [],
 		imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
 	});
-	console.log("*****");
-	console.log("sauce" + sauce);
-	console.log("*****");
 
 	// Sauce.insertOne(sauce)
 	// 	.then(() => res.status(201).json({ message: "Objet crée" }))
@@ -65,16 +118,13 @@ exports.getOneSauce = (req, res, next) => {
 exports.getAllSauces = (req, res, next) => {
 	console.log("sauce " + Sauce.find());
 	Sauce.find()
-		.then(sauce => {
-			res.status(200).json(sauce);
-		})
+		.then(sauce => res.status(200).json(sauce))
 
 		.catch(error => console.log(error));
 };
 exports.dealLike = (req, res, next) => {
 	Sauce.findOne({ _id: req.params.id })
 		.then(sauce => {
-			res.status(200).json(sauce);
 			console.log("sauces.likes " + sauce.likes);
 			// traitement de la valeur du like
 			if (req.body.like === 1) {
@@ -124,6 +174,8 @@ exports.dealLike = (req, res, next) => {
 			)
 				.then(() => res.status(200).json({ message: "Objet modifié !" }))
 				.catch(error => res.status(400).json({ error }));
+			console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		})
 		.catch(error => res.status(404).json({ error }));
+	console.log("***********************************************");
 };
