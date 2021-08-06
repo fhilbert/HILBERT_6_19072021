@@ -35,6 +35,7 @@ exports.signup = (req, res, next) => {
 		.catch(error => res.status(503).json({ error }));
 };
 exports.login = (req, res, next) => {
+	const tokenkey = process.env.TOKENKEY;
 	User.findOne({ email: req.body.email })
 		.then(user => {
 			if (!user) {
@@ -48,11 +49,10 @@ exports.login = (req, res, next) => {
 					}
 					res.status(200).json({
 						userId: user._id,
-						token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", { expiresIn: "24h" }),
+						token: jwt.sign({ userId: user._id }, tokenkey, { expiresIn: "24h" }),
 					});
 				})
 				.catch(error => res.status(501).json({ error }));
 		})
 		.catch(error => res.status(502).json({ error }));
-	console.log("res : " + res);
 };

@@ -94,8 +94,6 @@ exports.modifySauce = (req, res, next) => {
 		  }
 		: { ...req.body };
 
-	console.log("reqfile : " + req.file);
-
 	Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
 		.then(() => res.status(200).json({ message: "Objet modifié !" }))
 		.catch(error => res.status(400).json({ error }));
@@ -186,5 +184,4 @@ exports.dealLike = (req, res, next) => {
 			console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		})
 		.catch(error => res.status(404).json({ error }));
-	console.log("***********************************************");
 };

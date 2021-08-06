@@ -24,7 +24,7 @@ Content-Type:application/json
 ###
 #jean francois
 POST  http://localhost:3000/api/sauces
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc4MDQ5ODQsImV4cCI6MTYyNzg5MTM4NH0.70Fb2RhPig_DWKZn_G6sm3OmtOogTCBDyr__SJYW2hU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
 Content-Type:application/json
 
 {
@@ -44,16 +44,26 @@ Content-Type:application/json
 }
 ###
 GET http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc4MDQ5ODQsImV4cCI6MTYyNzg5MTM4NH0.70Fb2RhPig_DWKZn_G6sm3OmtOogTCBDyr__SJYW2hU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
+
 
 ###
-POST http://localhost:3000/api/sauces/"60feff6b02ad3ebeb73f43ba"/like
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc4MDQ5ODQsImV4cCI6MTYyNzg5MTM4NH0.70Fb2RhPig_DWKZn_G6sm3OmtOogTCBDyr__SJYW2hU
+POST http://localhost:3000/api/sauces/60feff6b02ad3ebeb73f43ba/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
 Content-Type:application/json
 
 {
     "like": 1,
-    "userId": "USERIDRENVOY2PARLOGIN"
+  "userId": "61000b346c8b4ae57b34cc54"
+}
+###
+PUT http://localhost:3000/api/sauces/60feff6b02ad3ebeb73f43ba
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
+Content-Type:application/json
+
+{
+    "mainPepper": "salt",
+  "userId": "61000b346c8b4ae57b34cc54"
 }
 
 
