@@ -79,7 +79,6 @@ exports.modifySauce = (req, res, next) => {
 	Sauce.findOne({ _id: req.params.id })
 		.then(sauce => {
 			const filename = sauce.imageUrl.split("/images/")[1];
-			console.log("filename : " + filename);
 			fs.unlink(`images/${filename}`, err => {
 				if (err) throw err;
 				console.log("unlink img");
@@ -93,6 +92,9 @@ exports.modifySauce = (req, res, next) => {
 				imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
 		  }
 		: { ...req.body };
+
+	// console.log("id : " + _id);
+	// console.log("sauce.id : " + sauceObject._id);
 
 	Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
 		.then(() => res.status(200).json({ message: "Objet modifié !" }))
@@ -123,7 +125,6 @@ exports.getOneSauce = (req, res, next) => {
 };
 
 exports.getAllSauces = (req, res, next) => {
-	console.log("sauce " + Sauce.find());
 	Sauce.find()
 		.then(sauce => res.status(200).json(sauce))
 
@@ -134,7 +135,14 @@ exports.dealLike = (req, res, next) => {
 		.then(sauce => {
 			console.log("sauces.likes " + sauce.likes);
 			// traitement de la valeur du like
+
 			if (req.body.like === 1) {
+				const isInLike = sauce.usersLiked.includes(req.body.userId);
+				console.log("isInLike : " + isInLike);
+				console.log("doublon like");
+				if (isInLike) {
+					return;
+				}
 				sauce.likes += 1;
 				sauce.usersLiked.push(req.body.userId);
 
@@ -158,16 +166,19 @@ exports.dealLike = (req, res, next) => {
 
 					// traitement du 0
 				} else if (req.body.like === -1) {
+					const isInDislike = sauce.usersDisliked.includes(req.body.userId);
+					console.log("doublon dislike");
+					if (isInDislike) {
+						return;
+					}
 					sauce.dislikes += 1;
 					sauce.usersDisliked.push(req.body.userId);
 					console.log("disliked " + sauce.usersDisliked + " " + req.body.userId);
-					console.log(typeof sauce.usersDisliked);
 					console.log("traitement " + req.body.like);
 					// traitement du -1
 				}
 			}
 			// update likes
-			console.log("---------------------------------------------");
 			Sauce.updateOne(
 				{ _id: req.params.id },
 				{
@@ -181,7 +192,6 @@ exports.dealLike = (req, res, next) => {
 			)
 				.then(() => res.status(200).json({ message: "Objet modifié !" }))
 				.catch(error => res.status(400).json({ error }));
-			console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		})
 		.catch(error => res.status(404).json({ error }));
 };

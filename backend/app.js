@@ -1,8 +1,10 @@
 const express = require("express");
-// //const bodyParser = require("body-parser");
+const helmet = require("helmet");
+
 const mongoose = require("mongoose");
 require("dotenv").config();
 const path = require("path");
+
 const sauceRoutes = require("./routes/sauces");
 const userRoutes = require("./routes/user");
 
@@ -15,6 +17,8 @@ mongoose
 	.catch(err => console.log("Connexion à MongoDB échouée !" + err));
 
 const app = express();
+
+app.use(helmet());
 
 app.use((req, res, next) => {
 	res.setHeader("Access-Control-Allow-Origin", "*");
