@@ -24,7 +24,7 @@ Content-Type:application/json
 ###
 #jean francois
 POST  http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2MjgyOTUyMDgsImV4cCI6MTYyODM4MTYwOH0.7xLyyXYWhzSRhskE9-JCeITGWZ_xqXMn74fNlJfGdq8
 Content-Type:application/json
 
 {
@@ -44,27 +44,30 @@ Content-Type:application/json
 }
 ###
 GET http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjg3MDExNjIsImV4cCI6MTYyODc4NzU2Mn0.S3wBitT_JvNgRKTXKSB-uJhz7JjlxTWoPuxEaHREGSw
 
 ###
-POST http://localhost:3000/api/sauces/60feff6b02ad3ebeb73f43ba/like
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
+POST http://localhost:3000/api/sauces/60fdd794447a6092baaf3466/like
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjg3MDExNjIsImV4cCI6MTYyODc4NzU2Mn0.S3wBitT_JvNgRKTXKSB-uJhz7JjlxTWoPuxEaHREGSw
 Content-Type:application/json
 
 {
-    "like": 1,
+    "like": -1,
   "userId": "61000b346c8b4ae57b34cc54"
 }
 ###
-PUT http://localhost:3000/api/sauces/60feff6b02ad3ebeb73f43ba
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjc5OTY2NTgsImV4cCI6MTYyODA4MzA1OH0.FEBQLKH7nyTpKwD6jxkAAw9VadY-atyeQRo-utqAa7E
+PUT http://localhost:3000/api/sauces/610dc70a3aa2bd75276f46ba
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjg3MDExNjIsImV4cCI6MTYyODc4NzU2Mn0.S3wBitT_JvNgRKTXKSB-uJhz7JjlxTWoPuxEaHREGSw
 Content-Type:application/json
 
 {
-    "mainPepper": "salt",
-  "userId": "61000b346c8b4ae57b34cc54"
+    "mainPepper": "sault"
 }
+###
+DELETE http://localhost:3000/api/sauces/61096e1d22c9993392c27301
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2MjgyOTUyMDgsImV4cCI6MTYyODM4MTYwOH0.7xLyyXYWhzSRhskE9-JCeITGWZ_xqXMn74fNlJfGdq8
+Content-Type:application/json
+
 
 
 

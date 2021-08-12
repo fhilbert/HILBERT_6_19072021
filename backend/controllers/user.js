@@ -6,8 +6,8 @@ const User = require("../models/User");
 exports.userCheck = (req, res, next) => {
 	// user
 	if (req.body.email === "") return res.status(405).json({ error: "email vide" });
-	const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	if (!req.body.email.match(mailformat)) {
+	const mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	if (!req.body.email.match(mailFormat)) {
 		return res.status(405).json({ error: "email invalide" });
 	}
 
@@ -15,6 +15,11 @@ exports.userCheck = (req, res, next) => {
 	if (req.body.password === "") {
 		return res.status(405).json({ error: "Mot de passe vide" });
 	}
+	const pswdFormat = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+	if (!req.body.password.match(pswdFormat)) {
+		return res.status(405).json({ error: "Mot de passe invalide" });
+	}
+
 	next();
 };
 

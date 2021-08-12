@@ -8,7 +8,6 @@ const path = require("path");
 const sauceRoutes = require("./routes/sauces");
 const userRoutes = require("./routes/user");
 
-const tokenkey = process.env.TOKENKEY;
 const accessmongodb = process.env.ACCESSMONGODB;
 
 mongoose

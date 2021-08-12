@@ -2,57 +2,32 @@ const Sauce = require("../models/Sauce");
 const fs = require("fs");
 
 exports.sauceCheck = (req, res, next) => {
+	console.log("req.body");
+	console.log(req.body);
 	// userId
-	let myRegex = /[a-z0-9]/gi;
 	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
-	//	if (!req.body.userId.match(myRegex)) return res.status(405).json({ error: "userId non valide" });
 	//verifier existence du userid
 
 	// name
 	if (req.body.name === "") return res.status(405).json({ error: "name vide" });
-	myRegex = /[a-z0-9]/gi;
-	// if (!req.body.name.match(myRegex)) return res.status(405).json({ error: "name invalide" });
 
-	// manufacturer
 	if (req.body.manufacturer === "") return res.status(405).json({ error: "manufacturer vide" });
-	myRegex = /[a-z0-9]/gi;
-	// if (!req.body.manufacturer.match(myRegex)) return res.status(405).json({ error: "manufacturer invalide" });
 
-	// description
 	if (req.body.description === "") return res.status(405).json({ error: "description vide" });
-	myRegex = /[a-z0-9]/gi;
-	// if (req.body.description.match(myRegex)) return res.status(405).json({ error: "description invalide" });
 
-	// mainPepper
 	if (req.body.mainPepper === "") return res.status(405).json({ error: "mainPepper vide" });
-	myRegex = /[a-z0-9]/gi;
-	// if (req.body.mainPepper.match(myRegex)) return res.status(405).json({ error: "mainPepper invalide" });
 
-	// imageUrl
 	if (req.body.imageUrl === "") return res.status(405).json({ error: "imageUrl vide" });
 
-	// heat
 	if (req.body.heat === "") return res.status(405).json({ error: "heat vide" });
-	myRegex = /[0-9]/gi;
-	// if (req.body.heat.match(myRegex)) return res.status(405).json({ error: "heat invalide" });
 
-	// likes
 	if (req.body.likes === "") return res.status(405).json({ error: "likes vide" });
-	myRegex = /[0-9]/gi;
-	// if (req.body.likes === "") return res.status(405).json({ error: "likes invalide" });
 
-	// dislikes
 	if (req.body.dislikes === "") return res.status(405).json({ error: "dislikes vide" });
-	myRegex = /[0-9]/gi;
-	// if (req.body.dislikes === "") return res.status(405).json({ error: "dislikes invalide" });
 
-	// usersLiked
 	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
-	//verifier existence du userid
 
-	// usersDisliked
 	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
-	//verifier existence du userid
 
 	next();
 };
@@ -76,28 +51,28 @@ exports.createSauce = (req, res, next) => {
 };
 
 exports.modifySauce = (req, res, next) => {
-	Sauce.findOne({ _id: req.params.id })
-		.then(sauce => {
-			const filename = sauce.imageUrl.split("/images/")[1];
-			fs.unlink(`images/${filename}`, err => {
-				if (err) throw err;
-				console.log("unlink img");
-			});
-		})
-		.catch(error => res.status(500).json({ error }));
+	if (req.file) {
+		Sauce.findOne({ _id: req.params.id })
 
+			.then(sauce => {
+				const filename = sauce.imageUrl.split("/images/")[1];
+				fs.unlink(`images/${filename}`, err => {
+					if (err) throw err;
+					console.log("unlink img");
+				});
+			})
+			.catch(error => res.status(500).json({ error }));
+	}
 	const sauceObject = req.file
 		? {
 				...JSON.parse(req.body.sauce),
 				imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
 		  }
 		: { ...req.body };
-
-	// console.log("id : " + _id);
-	// console.log("sauce.id : " + sauceObject._id);
+	console.log("creator :");
 
 	Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
-		.then(() => res.status(200).json({ message: "Objet modifié !" }))
+		.then(() => res.status(200).json({ message: "Objet modifié ! " }))
 		.catch(error => res.status(400).json({ error }));
 };
 
@@ -141,7 +116,7 @@ exports.dealLike = (req, res, next) => {
 				console.log("isInLike : " + isInLike);
 				console.log("doublon like");
 				if (isInLike) {
-					return;
+					return res.status(401).json({ error: "doublon like " });
 				}
 				sauce.likes += 1;
 				sauce.usersLiked.push(req.body.userId);
@@ -169,7 +144,7 @@ exports.dealLike = (req, res, next) => {
 					const isInDislike = sauce.usersDisliked.includes(req.body.userId);
 					console.log("doublon dislike");
 					if (isInDislike) {
-						return;
+						return res.status(401).json({ error: "doublon dislike " });
 					}
 					sauce.dislikes += 1;
 					sauce.usersDisliked.push(req.body.userId);
