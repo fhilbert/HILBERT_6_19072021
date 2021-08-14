@@ -25,10 +25,6 @@ exports.sauceCheck = (req, res, next) => {
 
 	if (req.body.dislikes === "") return res.status(405).json({ error: "dislikes vide" });
 
-	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
-
-	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
-
 	next();
 };
 
@@ -108,13 +104,10 @@ exports.getAllSauces = (req, res, next) => {
 exports.dealLike = (req, res, next) => {
 	Sauce.findOne({ _id: req.params.id })
 		.then(sauce => {
-			console.log("sauces.likes " + sauce.likes);
 			// traitement de la valeur du like
 
 			if (req.body.like === 1) {
 				const isInLike = sauce.usersLiked.includes(req.body.userId);
-				console.log("isInLike : " + isInLike);
-				console.log("doublon like");
 				if (isInLike) {
 					return res.status(401).json({ error: "doublon like " });
 				}
@@ -142,13 +135,11 @@ exports.dealLike = (req, res, next) => {
 					// traitement du 0
 				} else if (req.body.like === -1) {
 					const isInDislike = sauce.usersDisliked.includes(req.body.userId);
-					console.log("doublon dislike");
 					if (isInDislike) {
 						return res.status(401).json({ error: "doublon dislike " });
 					}
 					sauce.dislikes += 1;
 					sauce.usersDisliked.push(req.body.userId);
-					console.log("disliked " + sauce.usersDisliked + " " + req.body.userId);
 					console.log("traitement " + req.body.like);
 					// traitement du -1
 				}
