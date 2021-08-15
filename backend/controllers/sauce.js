@@ -6,7 +6,6 @@ exports.sauceCheck = (req, res, next) => {
 	console.log(req.body);
 	// userId
 	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
-	//verifier existence du userid
 
 	// name
 	if (req.body.name === "") return res.status(405).json({ error: "name vide" });
