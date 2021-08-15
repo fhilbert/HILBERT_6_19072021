@@ -2,12 +2,8 @@ const Sauce = require("../models/Sauce");
 const fs = require("fs");
 
 exports.sauceCheck = (req, res, next) => {
-	console.log("req.body");
-	console.log(req.body);
-	// userId
 	if (req.body.userId === "") return res.status(405).json({ error: "userId vide" });
 
-	// name
 	if (req.body.name === "") return res.status(405).json({ error: "name vide" });
 
 	if (req.body.manufacturer === "") return res.status(405).json({ error: "manufacturer vide" });

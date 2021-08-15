@@ -10,7 +10,6 @@ exports.userCheck = (req, res, next) => {
 	if (!req.body.email.match(mailFormat)) {
 		return res.status(405).json({ error: "email invalide" });
 	}
-
 	// password
 	if (req.body.password === "") {
 		return res.status(405).json({ error: "Mot de passe vide" });
