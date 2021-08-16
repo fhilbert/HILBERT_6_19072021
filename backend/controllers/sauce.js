@@ -60,7 +60,6 @@ exports.modifySauce = (req, res, next) => {
 				imageUrl: `${req.protocol}://${req.get("host")}/images/${req.file.filename}`,
 		  }
 		: { ...req.body };
-	console.log("creator :");
 
 	Sauce.updateOne({ _id: req.params.id }, { ...sauceObject, _id: req.params.id })
 		.then(() => res.status(200).json({ message: "Objet modifié ! " }))
@@ -85,7 +84,7 @@ exports.getOneSauce = (req, res, next) => {
 	Sauce.findOne({ _id: req.params.id })
 		.then(sauce => {
 			res.status(200).json(sauce);
-			console.log(sauce.likes);
+			// console.log(sauce.likes);
 		})
 		.catch(error => res.status(404).json({ error }));
 };
