@@ -2,7 +2,15 @@ POST  http://localhost:3000/api/auth/signup
 Content-Type:application/json
 
 {
-    "email":"to.hilbert@wanadoo.fr",
+    "email":"frank@gmail.com",
+    "password":"Tr05072003"
+}
+###
+POST  http://localhost:3000/api/auth/login
+Content-Type:application/json
+
+{
+    "email":"tom.hilbert@wanadoo.fr",
     "password":"Tr05072003"
 }
 ###
@@ -24,7 +32,7 @@ Content-Type:application/json
 ###
 #jean francois
 POST  http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2MjgyOTUyMDgsImV4cCI6MTYyODM4MTYwOH0.7xLyyXYWhzSRhskE9-JCeITGWZ_xqXMn74fNlJfGdq8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTE5OTBjNDEwY2JmMzQzY2Y1MmI4OTgiLCJpYXQiOjE2MjkwNjU1ODUsImV4cCI6MTYyOTE1MTk4NX0.PdWsoJ6CPKwiSPThw5HVq1bq33a5rQ0Un2Tm1803vM0
 Content-Type:application/json
 
 {
