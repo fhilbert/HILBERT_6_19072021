@@ -2,7 +2,15 @@ POST  http://localhost:3000/api/auth/signup
 Content-Type:application/json
 
 {
-    "email":"frank@gmail.com",
+    "email":"fhilbert78@gmail.com",
+    "password":"Tr05072003"
+}
+###
+POST  http://localhost:3000/api/auth/signup
+Content-Type:application/json
+
+{
+    "email":"fhilbert@gmail.com",
     "password":"Tr05072003"
 }
 ###
@@ -10,7 +18,15 @@ POST  http://localhost:3000/api/auth/login
 Content-Type:application/json
 
 {
-    "email":"tom.hilbert@wanadoo.fr",
+    "email":"fhilbert@gmail.com",
+    "password":"Tr05072003"
+}
+###
+POST  http://localhost:3000/api/auth/login
+Content-Type:application/json
+
+{
+    "email":"frank@gmail.com",
     "password":"Tr05072003"
 }
 ###
@@ -52,11 +68,11 @@ Content-Type:application/json
 }
 ###
 GET http://localhost:3000/api/sauces
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjg3MDExNjIsImV4cCI6MTYyODc4NzU2Mn0.S3wBitT_JvNgRKTXKSB-uJhz7JjlxTWoPuxEaHREGSw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFiYjViOWNiYWUxZDAzYmNiMDRkMjYiLCJpYXQiOjE2MjkyMDc2NzAsImV4cCI6MTYyOTI5NDA3MH0.drRjVbFwsMEyZd9YPvXGncC2C4wUt-RsxEJs7DFn8sE
 
 ###
 POST http://localhost:3000/api/sauces/60fdd794447a6092baaf3466/like
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjg3MDExNjIsImV4cCI6MTYyODc4NzU2Mn0.S3wBitT_JvNgRKTXKSB-uJhz7JjlxTWoPuxEaHREGSw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFhY2U5ZTBkYjM3YmUwZGFhZmQ0ODgiLCJpYXQiOjE2MjkxNjEzNTUsImV4cCI6MTYyOTI0Nzc1NX0.AwI0llwjzUkTj-Dq9515-IJkg4-DR5kOu6GxIvqtkRU
 Content-Type:application/json
 
 {
@@ -64,16 +80,17 @@ Content-Type:application/json
   "userId": "61000b346c8b4ae57b34cc54"
 }
 ###
-PUT http://localhost:3000/api/sauces/610dc70a3aa2bd75276f46ba
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2Mjg3MDExNjIsImV4cCI6MTYyODc4NzU2Mn0.S3wBitT_JvNgRKTXKSB-uJhz7JjlxTWoPuxEaHREGSw
+PUT http://localhost:3000/api/sauces/611ace8b0db37be0daafd485
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFiYjViOWNiYWUxZDAzYmNiMDRkMjYiLCJpYXQiOjE2MjkyMDc2NzAsImV4cCI6MTYyOTI5NDA3MH0.drRjVbFwsMEyZd9YPvXGncC2C4wUt-RsxEJs7DFn8sE
 Content-Type:application/json
 
 {
-    "mainPepper": "sault"
+    
+    "manufacturer": "inconnuer"
 }
 ###
-DELETE http://localhost:3000/api/sauces/61096e1d22c9993392c27301
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTAwMGIzNDZjOGI0YWU1N2IzNGNjNTQiLCJpYXQiOjE2MjgyOTUyMDgsImV4cCI6MTYyODM4MTYwOH0.7xLyyXYWhzSRhskE9-JCeITGWZ_xqXMn74fNlJfGdq8
+DELETE http://localhost:3000/api/sauces/611ace8b0db37be0daafd485
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTFiYjViOWNiYWUxZDAzYmNiMDRkMjYiLCJpYXQiOjE2MjkyMDc2NzAsImV4cCI6MTYyOTI5NDA3MH0.drRjVbFwsMEyZd9YPvXGncC2C4wUt-RsxEJs7DFn8sE
 Content-Type:application/json
 
 
@@ -99,35 +116,4 @@ Content-Type:application/json
 
 
 
-
-
-# db.sauces.insert({
-#         "userId":"frank",
-#     "name":"tabasco",
-#     "manufacturer":"kraft",
-#     "description": "bouteille",
-#     "mainPepper":"poivre",
-#     "imageUrl":"",
-#     "heat":8,
-#     "likes":3,
-#     "dislikes":2,
-#     "usersLiked":"",
-#     "usersDisliked":""
-# })
-# db.sauces.update({userId:"frank"},
-#     {$set: {
-#             likes:5
-
-#     } })
-#     "name":"tabasco",
-#     "manufacturer":"kraft",
-#     "description": "bouteille",
-#     "mainPepper":"poivre",
-#     "imageUrl":"",
-#     "heat":8,
-#     "likes":3,
-#     "dislikes":2,
-#     "usersLiked":"",
-#     "usersDisliked":""
-# })
 
